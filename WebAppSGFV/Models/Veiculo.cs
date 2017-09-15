@@ -16,6 +16,7 @@ namespace WebAppSGFV.Models
         public int KmAtual { get; set; }
         public int KmFinal { get; set; }
         public int Situacao { get; set; }
+        
 
 
 

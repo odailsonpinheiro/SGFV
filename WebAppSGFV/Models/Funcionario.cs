@@ -15,6 +15,7 @@ namespace WebAppSGFV.Models
         public string Email { get; set; }
         public string Cargo { get; set; }
         public string Funcao { get; set; }
+        public string Telefone { get; set; }
 
     }
 }
