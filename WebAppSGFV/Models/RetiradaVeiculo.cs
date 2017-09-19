@@ -7,5 +7,7 @@ namespace WebAppSGFV.Models
 {
     public class RetiradaVeiculo
     {
+        public int Id { get; set; }
+        public Boolean Status { get; set; }
     }
 }
