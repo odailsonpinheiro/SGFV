@@ -7,7 +7,7 @@ namespace WebAppSGFV.Models
 {
     public class Funcionario
     {
-        public int Id { get; set; }
+        public int FuncionarioId { get; set; }
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
         public int Cpf { get; set; }

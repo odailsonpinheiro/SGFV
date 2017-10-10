@@ -7,7 +7,7 @@ namespace WebAppSGFV.Models
 {
     public class Categoria
     {
-        public int Id { get; set; }
+        public int CategoriaId { get; set; }
         public string Descricao { get; set; }
     }
 }
