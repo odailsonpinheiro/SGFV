@@ -9,5 +9,7 @@ namespace WebAppSGFV.Models
     {
         public int CategoriaId { get; set; }
         public string Descricao { get; set; }
+        public virtual ICollection<Veiculo> Veiculos { get; set; }
+
     }
 }

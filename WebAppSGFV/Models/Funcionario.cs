@@ -16,6 +16,8 @@ namespace WebAppSGFV.Models
         public string Cargo { get; set; }
         public string Funcao { get; set; }
         public string Telefone { get; set; }
+        public virtual ICollection<RetiradaVeiculo> RetiradaVeiculos { get; set; }
+
 
     }
 }
