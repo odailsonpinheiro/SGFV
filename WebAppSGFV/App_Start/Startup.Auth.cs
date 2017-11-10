@@ -25,7 +25,7 @@ namespace WebAppSGFV
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/Home/Index"),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Permite que o aplicativo valide o carimbo de segurança quando o usuário efetuar login.

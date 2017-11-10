@@ -43,7 +43,48 @@ namespace WebAppSGFV
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
-            // Configurar a lógica de validação para nomes de usuário
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>()));
+
+            var roleAdministrador = "Administrador";
+            var senhaAdministrador = "Admin@123";
+
+            var roleUsuario = "Usuário";
+            var senhaUsuario = "User@123";
+
+
+            if (!roleManager.RoleExists(roleAdministrador))
+            {
+                roleManager.Create(new IdentityRole(roleAdministrador));
+            }
+
+            if (!roleManager.RoleExists(roleUsuario))
+            {
+                roleManager.Create(new IdentityRole(roleUsuario));
+            }
+
+            var usuarioAdministrador = new ApplicationUser
+            {
+                UserName = "admin@admin.com.br",
+                Email = "admin@admin.com.br"
+            };
+
+            var usuario = new ApplicationUser
+            {
+                UserName = "usuario@usuario.com.br",
+                Email = "usuario@usuario.com.br"
+            };
+
+
+            if (manager.Create(usuarioAdministrador, senhaAdministrador).Succeeded)
+            {
+                manager.AddToRole(usuarioAdministrador.Id, roleAdministrador);
+            }
+
+            if (manager.Create(usuario, senhaUsuario).Succeeded)
+            {
+                manager.AddToRole(usuario.Id, roleUsuario);
+            }
+
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
