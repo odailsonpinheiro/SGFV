@@ -51,6 +51,8 @@ namespace WebAppSGFV
             var roleUsuario = "Usuário";
             var senhaUsuario = "User@123";
 
+            var roleGerente = "Gerente";
+            var senhaGerente = "Gerente@123";
 
             if (!roleManager.RoleExists(roleAdministrador))
             {
@@ -60,6 +62,11 @@ namespace WebAppSGFV
             if (!roleManager.RoleExists(roleUsuario))
             {
                 roleManager.Create(new IdentityRole(roleUsuario));
+            }
+
+            if (!roleManager.RoleExists(roleGerente))
+            {
+                roleManager.Create(new IdentityRole(roleGerente));
             }
 
             var usuarioAdministrador = new ApplicationUser
@@ -74,6 +81,12 @@ namespace WebAppSGFV
                 Email = "usuario@usuario.com.br"
             };
 
+            var Gerente = new ApplicationUser
+            {
+                UserName = "gerente@gerente.com.br",
+                Email = "gerente@gerente.com.br"
+            };
+
 
             if (manager.Create(usuarioAdministrador, senhaAdministrador).Succeeded)
             {
@@ -83,6 +96,11 @@ namespace WebAppSGFV
             if (manager.Create(usuario, senhaUsuario).Succeeded)
             {
                 manager.AddToRole(usuario.Id, roleUsuario);
+            }
+
+            if (manager.Create(Gerente, senhaGerente).Succeeded)
+            {
+                manager.AddToRole(Gerente.Id, roleGerente);
             }
 
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
